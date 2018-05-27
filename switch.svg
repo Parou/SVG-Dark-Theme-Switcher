@@ -42,7 +42,7 @@
     <script type="text/javascript">
     function getCookie(keks) {
         /* Needs improvement, I'm seriously bad at JavaScript. */
-        var keks = `; ${document.cookie}`.match(`;\\s*${keks}=([^;]+)`);
+        var keks = `; ${window.parent.document.cookie}`.match(`;\\s*${keks}=([^;]+)`);
         return keks ? keks[1] : '';
     }
     var theme = 'light';
@@ -64,7 +64,7 @@
             theme = 'light';
         }
         /* Somehow works only temporary in Firefox. */
-        document.cookie = "themeStyle=" + theme + "; expires=Fri, 31 Dec 9999 23:59:59 GMT";
+        window.parent.document.cookie = "themeStyle=" + theme + "; expires=Fri, 31 Dec 9999 23:59:59 GMT";
     }
     /* Might need some actual variable watching thingy. */
     setInterval(getTheme, 100);
