@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- SVG Dark Theme Switcher by Alice Peters, https://alicepeters.de/ - https://github.com/Parou -->
+<svg width="100%" height="100%" viewBox="0 0 200 100" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:1.41421;">
+    <style type="text/css">
+    /* Light Theme */
+    * {
+        transform-origin: center right;
+        transition: all 0.5s;    
+    }
+    svg * { cursor: pointer; }
+    .Sky { fill: #aee3ff; }
+    .Sun-Moon { fill: #fffb94; }
+    .Crater * { fill: #e6eaea; }
+    .Crater, .Little-Star { opacity: 0; }
+    .Little-Star, .Big-Star { fill: #fff; }
+    .Sun-Moon, .Crater {
+        transition: all 0.5s cubic-bezier(0.5, -0.55, 0.3, 1.4);
+    }
+    /* Dark Theme */
+    .night .Sky { fill: #3a3a5d; }
+    .night .Sun-Moon, .night .Crater {
+        transform: translate(49.5%, 0);
+        fill: #fff;
+    }
+    .night .Crater { opacity: 1; }
+    .Big-Star { transition: all 300ms ease-in-out; }
+    .night .Cloud-Star1 {
+        transform: scale(0.14, 1) translate(-450%, 0);
+    }
+    .night .Cloud-Star2 {
+        transform: scale(0.10, 0.7) translate(-700%, 0);
+    }
+    .night .Cloud-Star3 {
+        transform: scale(0.06, 0.4) translate(-1050%, 40%);
+    }
+    .night .Little-Star { opacity: 1; }
+    .night .LS1 { transition-delay: 0.4s; }
+    .night .LS2 { transition-delay: 0.6s; }
+    .night .LS3 { transition-delay: 0.8s; }
+    </style>
+    <script type="text/javascript">
+    function getCookie(keks) {
+        /* Needs improvement, I'm seriously bad at JavaScript. */
+        var keks = `; ${document.cookie}`.match(`;\\s*${keks}=([^;]+)`);
+        return keks ? keks[1] : '';
+    }
+    var theme = 'light';
+    function getTheme() {
+        var switcher = document.getElementById('switch');
+        if(getCookie('themeStyle') == 'dark') {
+            theme = 'dark';
+            switcher.classList.add('night');
+        } else {
+            switcher.classList.remove('night');
+            theme = 'light';
+        }
+    }
+
+    function switchTheme() {
+        if(theme == 'light') {
+            theme = 'dark';
+        } else {
+            theme = 'light';
+        }
+        /* Somehow works only temporary in Firefox. */
+        document.cookie = "themeStyle=" + theme + "; expires=Fri, 31 Dec 9999 23:59:59 GMT";
+    }
+    /* Might need some actual variable watching thingy. */
+    setInterval(getTheme, 100);
+    </script>
+    <g id="switch" onclick="switchTheme();">
+        <path class="Sky" d="M200,50c0,-27.596 -22.404,-50 -50,-50l-100,0c-27.596,0 -50,22.404 -50,50c0,27.596 22.404,50 50,50l100,0c27.596,0 50,-22.404 50,-50Z"/>
+        <ellipse class="Cloud-Star1 Big-Star" cx="113.5" cy="26" rx="50.5" ry="7"/>
+        <ellipse class="Cloud-Star3 Big-Star" cx="124.5" cy="73" rx="50.5" ry="7"/>
+        <circle class="Sun-Moon" cx="50.5" cy="50.5" r="45.5"/>
+        <g class="Crater">
+            <circle cx="65.5" cy="27.5" r="8.5"/>
+            <circle cx="22" cy="61" r="5"/>
+            <circle cx="53.75" cy="76.75" r="10.75"/>
+        </g>
+        <ellipse class="Cloud-Star2 Big-Star" cx="97" cy="50.5" rx="50.5" ry="7"/>
+        <ellipse class="Little-Star LS1" cx="20" cy="40" rx="1" ry="1"/>
+        <ellipse class="Little-Star LS2" cx="30" cy="80" rx="2" ry="2"/>
+        <ellipse class="Little-Star LS3" cx="50" cy="90" rx="1" ry="1"/>
+    </g>
+</svg>

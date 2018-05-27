@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <title>SVG Dark Theme Switcher &middot; Example</title>
+        <style type="text/css">
+        body {
+            margin: 0;
+            padding: 0;
+        }
+        .content {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100vw;
+            min-height: 100vh;
+        }
+        .switcher object {
+            display: block;
+            margin: 10px;
+        }
+        </style>
+        <script type="text/javascript">
+            function getCookie(keks) {
+                /* Same as in switch.svg - needs improvement */
+                var keks = `; ${document.cookie}`.match(`;\\s*${keks}=([^;]+)`);
+                return keks ? keks[1] : '';
+            }
+
+            function setTheme() {
+                if (getCookie('themeStyle') == 'dark') {
+                    document.body.style.backgroundColor = '#000';
+                } else {
+                    document.body.style.backgroundColor = '#fff';
+                }
+            }
+            setInterval(setTheme, 100);
+        </script>
+    </head>
+
+    <body>
+        <div class="content">
+            <div class="switcher">
+                <object data="switch.svg" width="100" type="image/svg+xml"></object>
+                <object data="switch.svg" width="200" type="image/svg+xml"></object>
+                <object data="switch.svg" width="300" type="image/svg+xml"></object>
+                <object data="switch.svg" width="400" type="image/svg+xml"></object>
+                <object data="switch.svg" width="500" type="image/svg+xml"></object>
+            </div>
+        </div>
+    </body>
+
+</html>
