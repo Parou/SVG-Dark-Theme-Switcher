@@ -4,7 +4,7 @@ It sets a cookie (themeStyle) with the value light or dark that can then be used
 
 ## Usage:
 ```html
-<object data="switch.svg" width="100" type="image/svg+xml"></object>
+<embed src="switch.svg" width="100" type="image/svg+xml" />
 ```
   
 [View Demo](https://alicepeters.de/demo/DTSwitcher/)  
