@@ -63,7 +63,7 @@
         } else {
             theme = 'light';
         }
-        window.parent.document.cookie = "themeStyle=" + theme + "; expires=Fri, 31 Dec 9999 23:59:59 GMT";
+        window.parent.document.cookie = "themeStyle=" + theme + "; expires=Fri, 31 Dec 9999 23:59:59 GMT; path=/";
     }
     /* Might need some actual variable watching thingy. */
     setInterval(getTheme, 100);
