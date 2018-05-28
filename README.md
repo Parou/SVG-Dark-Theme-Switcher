@@ -10,5 +10,7 @@ It sets a cookie (themeStyle) with the value light or dark that can then be used
 [View Demo](https://alicepeters.de/demo/DTSwitcher/)  
 
 ![Switcher-Peview](switch.svg)  
+  
+![Animation-Preview](preview.gif)  
 
 <small>Inspired (and designed to look similar) by https://codepen.io/bnthor/pen/WQBNxO</small>
