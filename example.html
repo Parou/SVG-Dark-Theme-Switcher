@@ -3,23 +3,7 @@
 
     <head>
         <title>SVG Dark Theme Switcher &middot; Example</title>
-        <style type="text/css">
-        body {
-            margin: 0;
-            padding: 0;
-        }
-        .content {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 100vw;
-            min-height: 100vh;
-        }
-        .switcher embed {
-            display: block;
-            margin: 10px;
-        }
-        </style>
+        <link rel="stylesheet" type="text/css" media="all" href="style/default.css" />
         <script type="text/javascript">
             function getCookie(keks) {
                 /* Same as in switch.svg - needs improvement */
@@ -27,11 +11,23 @@
                 return keks ? keks[1] : '';
             }
 
+            themeStyle = 'light';
+
             function setTheme() {
-                if (getCookie('themeStyle') == 'dark') {
-                    document.body.style.backgroundColor = '#000';
-                } else {
-                    document.body.style.backgroundColor = '#fff';
+                var darkThemeId = 'dark-theme-css';
+                var darkThemeFile = 'style/dark.css';
+                if (getCookie('themeStyle') == 'dark' && themeStyle != 'dark') {
+                    themeStyle = 'dark';
+                    var style = document.createElement('link');
+                    style.setAttribute('rel', 'stylesheet');
+                    style.setAttribute('type', 'text/css');
+                    style.setAttribute('media', 'all');
+                    style.setAttribute('href', darkThemeFile);
+                    style.setAttribute('id', darkThemeId);
+                    document.head.appendChild(style);
+                } else if (getCookie('themeStyle') != 'dark' && themeStyle == 'dark') {
+                    themeStyle = 'light';
+                    document.getElementById(darkThemeId).remove();
                 }
             }
             setInterval(setTheme, 100);
